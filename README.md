@@ -2,12 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+This is a project that allows you to download movies for FREE WITHOUT ADS.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+all the download files are external links and contains torrent files.
 
-This is a project that allows you to download movies for FREE WITHOUR ADS.
+WE HIGHLY RECOMMEND YOU TO DOWNLOAD TORRENT FOR SAFER AND FASTER DOWNLOADS.
