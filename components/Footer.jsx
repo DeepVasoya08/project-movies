@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { actionType } from "../store/reducer";
 import { useStateValue } from "../store/store";
 import { selectedGenre } from "./Nav";

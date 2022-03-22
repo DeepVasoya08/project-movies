@@ -33,6 +33,7 @@ const Thumbnail = forwardRef(({ result }, ref) => {
               result.large_cover_image ||
               result.small_cover_image
             }
+            alt={result?.title}
           />
           <div className="p-2">
             <p className="truncate max-w-md">{result.summary}</p>

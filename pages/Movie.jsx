@@ -40,10 +40,11 @@ const Movie = () => {
               height={480}
               width={480}
               src={
-                data.medium_cover_image ||
-                data.large_cover_image ||
-                data.small_cover_image
+                data?.medium_cover_image ||
+                data?.large_cover_image ||
+                data?.small_cover_image
               }
+              alt={data?.title}
             />
           </div>
           <div className="text-2xl">
@@ -63,7 +64,7 @@ const Movie = () => {
               Rating: <span className="font-extralight">{data?.rating}/10</span>
             </h1>
             <div className="flex flex-wrap justify-evenly p-2">
-              {data.torrents.map((links, id) => (
+              {data?.torrents.map((links, id) => (
                 <Button key={id} variant="contained" href={`${links.url}`}>
                   Download
                 </Button>
@@ -93,6 +94,7 @@ const Movie = () => {
                     height={240}
                     width={240}
                     src={res.medium_cover_image || res.large_cover_image}
+                    alt={res?.title}
                   />
                   <div>
                     <h2 className="truncate max-w-xs">{res.title}</h2>
@@ -130,6 +132,7 @@ const Movie = () => {
             priority="true"
             layout="responsive"
             src={thumbnails.medium_cover_image || loadingImg}
+            alt={thumbnails?.title}
           />
           <Image
             height={240}
@@ -137,6 +140,7 @@ const Movie = () => {
             priority="true"
             layout="responsive"
             src={thumbnails.medium_screenshot_image1 || loadingImg}
+            alt={thumbnails?.title}
           />
           <Image
             height={240}
@@ -144,6 +148,7 @@ const Movie = () => {
             priority="true"
             layout="responsive"
             src={thumbnails.medium_screenshot_image2 || loadingImg}
+            alt={thumbnails?.title}
           />
           <Image
             height={240}
@@ -151,6 +156,7 @@ const Movie = () => {
             priority="true"
             layout="responsive"
             src={thumbnails.medium_screenshot_image3 || loadingImg}
+            alt={thumbnails?.title}
           />
         </div>
       </div>

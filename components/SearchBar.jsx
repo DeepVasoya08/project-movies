@@ -1,25 +1,22 @@
-import { Search } from "@mui/icons-material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const SearchBar = () => {
   const router = useRouter();
   const [input, setInput] = useState("");
   const [search, setSearch] = useState([]);
-  const Exp = /^([0-9]|[a-z])+([0-9a-z]+)$/i;
+  const Exp = /^([0-9_ ]|[a-z_ ])+([0-9_ a-z_ ]+)$/i;
 
   useEffect(() => {
-    if (input.match(Exp)) {
-      const delayDebounce = setTimeout(async () => {
-        if (input) {
-          const res = await fetch(
-            `https://yts.mx/api/v2/list_movies.json?query_term=${input}`
-          ).then((res) => res.json());
-          setSearch(res.data.movies);
-        }
-      }, 2000);
-    }
+    const delayDebounce = setTimeout(async () => {
+      if (input.match(Exp) && input) {
+        await axios
+          .get(`https://yts.mx/api/v2/list_movies.json?query_term=${input}`)
+          .then((res) => setSearch(res.data.data.movies));
+      }
+    }, 1000);
     return () => clearTimeout(delayDebounce);
   }, [input]);
 
@@ -51,7 +48,8 @@ const SearchBar = () => {
                 layout="fixed"
                 height={50}
                 width={50}
-                src={`${res.medium_cover_image}`}
+                src={res?.medium_cover_image}
+                alt={res?.title}
               />
               <h1>{res.title}</h1>
             </div>
