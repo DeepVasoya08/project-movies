@@ -17,20 +17,23 @@ const Movie = () => {
   data = JSON.parse(data);
 
   useEffect(async () => {
-    await axios
+    const movie_suggestions = await axios
       .get(`https://yts.mx/api/v2/movie_suggestions.json?movie_id=${data?.id}`)
       .then((res) => setRelatedMovies(res.data.data.movies));
 
-    await axios
+    const movie_details = await axios
       .get(
-        `https://yts.mx/api/v2/movie_details.json?movie_id=${data.id}&with_images=true&with_cast=true`
+        `https://yts.mx/api/v2/movie_details.json?movie_id=${data?.id}&with_images=true&with_cast=true`
       )
       .then((res) => setThumbnails(res.data.data.movie));
+    return () => {
+      movie_suggestions, movie_details;
+    };
   }, [router]);
 
   return (
     <div>
-      <NextSeo title={data.title} description={data.summary} />
+      <NextSeo title={data?.title} description={data?.summary} />
       <Header />
       <div className="px-5">
         <div className="grid sm:grid lg:grid-cols-3">

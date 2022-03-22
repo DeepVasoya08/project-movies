@@ -14,7 +14,7 @@ const Thumbnail = forwardRef(({ result }, ref) => {
       className="p-2 z-0 group cursor-pointer transition duration-200 transform sm:hover:scale-105 hover:z-50"
       onClick={() =>
         router.push({
-          pathname: "/Movie",
+          pathname: "Movie",
           query: { data: JSON.stringify(result) },
         })
       }
@@ -29,20 +29,20 @@ const Thumbnail = forwardRef(({ result }, ref) => {
             height={540}
             width={480}
             src={
-              result.medium_cover_image ||
-              result.large_cover_image ||
-              result.small_cover_image
+              result?.medium_cover_image ||
+              result?.large_cover_image ||
+              result?.small_cover_image
             }
             alt={result?.title}
           />
           <div className="p-2">
-            <p className="truncate max-w-md">{result.summary}</p>
+            <p className="truncate max-w-md">{result?.summary}</p>
             <h2 className="mt-1 text-2xl text-white transition-all duration-100 ease-in-out group-hover:font-bold">
-              {result.title}
+              {result?.title}
             </h2>
             <p className="flex items-center">
-              {result.year} <ThumbUpIcon className="h-5 mx-2" />
-              {result.rating}/10
+              {result?.year} <ThumbUpIcon className="h-5 mx-2" />
+              {result?.rating}/10
             </p>
           </div>
         </>

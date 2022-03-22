@@ -12,7 +12,7 @@ const SearchBar = () => {
   useEffect(() => {
     const delayDebounce = setTimeout(async () => {
       if (input.match(Exp) && input) {
-        await axios
+        const res = await axios
           .get(`https://yts.mx/api/v2/list_movies.json?query_term=${input}`)
           .then((res) => setSearch(res.data.data.movies));
       }
@@ -51,7 +51,7 @@ const SearchBar = () => {
                 src={res?.medium_cover_image}
                 alt={res?.title}
               />
-              <h1>{res.title}</h1>
+              <h1>{res?.title}</h1>
             </div>
           ))}
         </div>
