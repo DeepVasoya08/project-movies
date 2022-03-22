@@ -9,13 +9,17 @@ const SearchBar = () => {
   const [search, setSearch] = useState([]);
   const Exp = /^([0-9_ ]|[a-z_ ])+([0-9_ a-z_ ]+)$/i;
 
+  const handleSearch = async () => {
+    if (input.match(Exp) && input) {
+      await axios
+        .get(`https://yts.mx/api/v2/list_movies.json?query_term=${input}`)
+        .then((res) => setSearch(res.data.data.movies));
+    }
+  };
+
   useEffect(() => {
     const delayDebounce = setTimeout(async () => {
-      if (input.match(Exp) && input) {
-        const res = await axios
-          .get(`https://yts.mx/api/v2/list_movies.json?query_term=${input}`)
-          .then((res) => setSearch(res.data.data.movies));
-      }
+      handleSearch();
     }, 1000);
     return () => clearTimeout(delayDebounce);
   }, [input]);

@@ -16,19 +16,21 @@ const Movie = () => {
   } = router;
   data = JSON.parse(data);
 
-  useEffect(async () => {
-    const movie_suggestions = await axios
-      .get(`https://yts.mx/api/v2/movie_suggestions.json?movie_id=${data?.id}`)
-      .then((res) => setRelatedMovies(res.data.data.movies));
+  useEffect(() => {
+    const fetchData = async () => {
+      await axios
+        .get(
+          `https://yts.mx/api/v2/movie_suggestions.json?movie_id=${data?.id}`
+        )
+        .then((res) => setRelatedMovies(res.data.data.movies));
 
-    const movie_details = await axios
-      .get(
-        `https://yts.mx/api/v2/movie_details.json?movie_id=${data?.id}&with_images=true&with_cast=true`
-      )
-      .then((res) => setThumbnails(res.data.data.movie));
-    return () => {
-      movie_suggestions, movie_details;
+      await axios
+        .get(
+          `https://yts.mx/api/v2/movie_details.json?movie_id=${data?.id}&with_images=true&with_cast=true`
+        )
+        .then((res) => setThumbnails(res.data.data.movie));
     };
+    fetchData();
   }, [router]);
 
   return (
