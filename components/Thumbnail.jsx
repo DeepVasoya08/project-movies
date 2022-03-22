@@ -14,7 +14,7 @@ const Thumbnail = forwardRef(({ result }, ref) => {
       className="p-2 z-0 group cursor-pointer transition duration-200 transform sm:hover:scale-105 hover:z-50"
       onClick={() =>
         router.push({
-          pathname: "Movie",
+          pathname: "/movie",
           query: { data: JSON.stringify(result) },
         })
       }
@@ -24,7 +24,6 @@ const Thumbnail = forwardRef(({ result }, ref) => {
       ) : (
         <>
           <Image
-            priority="true"
             layout="responsive"
             height={540}
             width={480}

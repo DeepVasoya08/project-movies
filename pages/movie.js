@@ -31,7 +31,7 @@ const Movie = () => {
         .then((res) => setThumbnails(res.data.data.movie));
     };
     fetchData();
-  }, [router]);
+  }, [router, data?.id]);
 
   return (
     <div>
@@ -94,7 +94,6 @@ const Movie = () => {
                   }
                 >
                   <Image
-                    priority="true"
                     layout="responsive"
                     height={240}
                     width={240}
@@ -134,7 +133,6 @@ const Movie = () => {
           <Image
             height={240}
             width={240}
-            priority="true"
             layout="responsive"
             src={thumbnails.medium_cover_image || loadingImg}
             alt={thumbnails?.title}
@@ -142,7 +140,6 @@ const Movie = () => {
           <Image
             height={240}
             width={240}
-            priority="true"
             layout="responsive"
             src={thumbnails.medium_screenshot_image1 || loadingImg}
             alt={thumbnails?.title}
@@ -150,7 +147,6 @@ const Movie = () => {
           <Image
             height={240}
             width={240}
-            priority="true"
             layout="responsive"
             src={thumbnails.medium_screenshot_image2 || loadingImg}
             alt={thumbnails?.title}
@@ -158,7 +154,6 @@ const Movie = () => {
           <Image
             height={240}
             width={240}
-            priority="true"
             layout="responsive"
             src={thumbnails.medium_screenshot_image3 || loadingImg}
             alt={thumbnails?.title}
