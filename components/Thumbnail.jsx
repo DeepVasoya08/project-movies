@@ -15,7 +15,7 @@ const Thumbnail = forwardRef(({ result }, ref) => {
       onClick={() =>
         router.push({
           pathname: "/movie",
-          query: { data: JSON.stringify(result) },
+          query: result,
         })
       }
     >

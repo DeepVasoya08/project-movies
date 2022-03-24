@@ -42,13 +42,12 @@ const SearchBar = () => {
               className="cursor-pointer mb-2 w-full h-13 flex items-center text-black hover:bg-gray-500"
               onClick={() =>
                 router.push({
-                  pathname: "/Movie",
-                  query: { data: JSON.stringify(res) },
+                  pathname: "/movie",
+                  query: res,
                 })
               }
             >
               <Image
-                priority="true"
                 layout="fixed"
                 height={50}
                 width={50}
