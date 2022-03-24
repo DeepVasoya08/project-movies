@@ -8,13 +8,14 @@ import Button from "@mui/material/Button";
 import loadingImg from "../public/loading.jpg";
 
 const Movie = () => {
-  //   const router = useRouter();
-  //   const [relatedMovies, setRelatedMovies] = useState([]);
-  //   const [thumbnails, setThumbnails] = useState([]);
-  //   const {
-  //     query: { data },
-  //   } = router;
-  //   data = JSON.parse(data);
+  const router = useRouter();
+  const [relatedMovies, setRelatedMovies] = useState([]);
+  const [thumbnails, setThumbnails] = useState([]);
+  const {
+    query: { data },
+  } = router;
+  data = JSON.parse(data);
+  console.log(data);
   //   useEffect(() => {
   //     const fetchData = async () => {
   //       await axios
