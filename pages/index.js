@@ -1,10 +1,10 @@
 import reducer, { initialState } from "../store/reducer";
 import { StateProvider } from "../store/store";
+import { NextSeo } from "next-seo";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
 import Body from "../components/Body";
 import requests from "../utils/requests";
-import { NextSeo } from "next-seo";
 import Footer from "../components/Footer";
 
 const index = ({ results }) => {
