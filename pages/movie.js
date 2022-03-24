@@ -31,7 +31,7 @@ const Movie = () => {
         .then((res) => setThumbnails(res.data.data.movie));
     };
     fetchData();
-  }, [router, data?.id]);
+  }, [router]);
 
   return (
     <div>
