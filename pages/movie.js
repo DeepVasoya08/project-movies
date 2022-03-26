@@ -12,6 +12,8 @@ const Movie = () => {
   const [relatedMovies, setRelatedMovies] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
   const { query } = router;
+  query === undefined ? 40201 : query;
+
   useEffect(() => {
     const fetchData = async () => {
       await axios
@@ -27,6 +29,7 @@ const Movie = () => {
     };
     fetchData();
   }, [router]);
+
   return (
     <div>
       <NextSeo title={query?.title} description={query?.summary} />
