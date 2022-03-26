@@ -7,12 +7,15 @@ import Header from "../components/Header";
 import Button from "@mui/material/Button";
 import loadingImg from "../public/loading.jpg";
 
-const Movie = () => {
+const Movie = ({ results }) => {
   const router = useRouter();
   const [relatedMovies, setRelatedMovies] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
-  const { query } = router;
-  query === undefined ? 40201 : query;
+  let { query } = router;
+
+  if (query.id == undefined) {
+    query = results;
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +32,6 @@ const Movie = () => {
     };
     fetchData();
   }, [router]);
-
   return (
     <div>
       <NextSeo title={query?.title} description={query?.summary} />
@@ -157,5 +159,16 @@ const Movie = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const res = await fetch(
+    `https://yts.mx/api/v2/list_movies.json?genre&sort=year`
+  ).then((res) => res.json());
+  return {
+    props: {
+      results: res.data.movies[0],
+    },
+  };
+}
 
 export default Movie;
